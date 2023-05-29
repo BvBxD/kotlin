@@ -16,5 +16,9 @@ class MainActivity : AppCompatActivity() {
             val pindah = Intent(this, HalamanLogin::class.java);
             startActivity(pindah)
         }
+        val logout = findViewById<ImageView>(R.id.iv_keluar);
+        logout.setOnClickListener {
+            finishAffinity()
+        }
     }
 }
