@@ -5,19 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import com.example.bljr.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        var login = findViewById<Button>(R.id.btn_login)
-        login.setOnClickListener {
-            val pindah = Intent(this, HalamanLogin::class.java);
-            startActivity(pindah)
-        }
-        val logout = findViewById<ImageView>(R.id.iv_keluar);
-        logout.setOnClickListener {
+       binding.btnLogin.setOnClickListener {
+           val login = Intent(this,HalamanLogin::class.java);
+           startActivity(login)
+       }
+        binding.ivKeluar.setOnClickListener {
             finishAffinity()
         }
     }

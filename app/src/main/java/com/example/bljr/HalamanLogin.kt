@@ -5,24 +5,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.example.bljr.databinding.ActivityHalamanLoginBinding
 
 class HalamanLogin : AppCompatActivity() {
 
+    private lateinit var binding : ActivityHalamanLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_halaman_login)
+        binding = ActivityHalamanLoginBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val email = findViewById<EditText>(R.id.et_email);
-        val password = findViewById<EditText>(R.id.et_pass);
-        val login = findViewById<Button>(R.id.btn_login1);
-        login.setOnClickListener {
-            val pindah = Intent(this, Home::class.java);
-            startActivity(pindah)
+        binding.btnLogin1.setOnClickListener {
+            val login = Intent(this, Home::class.java);
+            startActivity(login)
         }
-       val cancel = findViewById<Button>(R.id.btn_cancel);
-       cancel.setOnClickListener {
-           val kembali = Intent(this, MainActivity::class.java);
-           startActivity(kembali)
-       }
+        binding.btnCancel.setOnClickListener {
+            val cancel = Intent(this, MainActivity::class.java);
+            startActivity(cancel)
+        }
     }
 }
